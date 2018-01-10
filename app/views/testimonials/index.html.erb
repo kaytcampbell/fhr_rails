@@ -1,0 +1,94 @@
+<p id="notice"><%= notice %></p>
+
+<div class="short-hero about">
+  <div class="row">
+    <div class="large-10 columns large-centered text-center">
+      <h1 class="header-bg">Testimonials</h1>
+    </div>
+  </div>
+</div>
+
+    <div class="whitespace dark-blue-bg-color">
+      <div class="row">
+        <div class="large-12 columns text-center mb1">
+          <h3 class="white-text">What Our Clients Are Saying</h3>
+          <p class="white-text mb1">From the Better Business Bureau, HomeStars, and Houzz.</p>
+          <p class="text-center"><img src="../images/testimonials-logos.png" width="511"></p>
+        </div>
+      </div>
+      <div class="row mt1">
+        <div class="large-6 columns">
+          <div class="quote-box p1">
+            <p class="pt1 pb1">
+              "We have used Full House Renovations now 3 times, first time was 15 years ago and then the last two
+              years as well. Obviously since we have used them 3 times we have been extremely happy with their
+              service. Quality has been great, tradesmen have been great and final product was amazing.
+              I think people expect too much going into a renovation, quality takes time, and unforeseen things
+              come up all the time as well. BUT in the end everything is beautiful. We were referred to them and I
+              have also referred them now many times as well. If and when we are still here when it’s time to
+              change again they will be our go to company for sure!!!!!"
+            </p>
+          </div>
+          <div class="arrow-down">
+          </div>
+          <p class="mt1 text-center">
+            <span class="white-text"><strong>The Robson Family</strong></span><br>
+            Edmonton
+          </p>
+        </div>
+      </div>
+      <div class="row mt1">
+        <div class="large-6 large-push-6 columns">
+          <% @testimonials.each do |testimonial| %>
+            <div class="quote-box p1">
+              <p class="pt1"><%= testimonial.body %></p>
+            </div>
+            <div class="arrow-down">
+            </div>
+            <p class="mt1 text-center">
+              <span class="white-text"><strong><%= testimonial.author %></strong></span><br>
+              <%= testimonial.location %>
+            </p>
+            <%= link_to 'Show', testimonial %>
+            <%= link_to 'Edit', edit_testimonial_path(testimonial) %>
+            <%= link_to 'Destroy', testimonial, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="whitespace">
+      <div class="row">
+        <div class="large-12 columns text-center">
+          <h3 class="blue-text">Ready to Work With Us?</h3>
+          <a href="contact.php" class="button mt1">Request an Estimate</a>
+        </div>
+      </div>
+    </div>
+
+<table>
+  <thead>
+    <tr>
+      <th>Body</th>
+      <th>Author</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @testimonials.each do |testimonial| %>
+      <tr>
+        <td><%= testimonial.body %></td>
+        <td><%= testimonial.author %></td>
+        <td><%= testimonial.location %></td>
+        <td><%= link_to 'Show', testimonial %></td>
+        <td><%= link_to 'Edit', edit_testimonial_path(testimonial) %></td>
+        <td><%= link_to 'Destroy', testimonial, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Testimonial', new_testimonial_path %>
